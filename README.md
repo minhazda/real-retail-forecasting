@@ -50,6 +50,22 @@ Measured on the full 1,067,371-row table (not cited estimates) — full log in
 Each cleaning decision is logged with its **rationale and the alternative I rejected**, and
 the cleaning code references the decision IDs.
 
+## SQL analysis (DuckDB)
+
+The same findings, reproduced in **pure SQL** for verification in an independent stack:
+[`sql/demand_analysis.sql`](sql/demand_analysis.sql). It runs against the committed processed
+panel with no download, and demonstrates window functions, date logic, and regex cleaning.
+
+```bash
+pip install duckdb
+duckdb -c ".read sql/demand_analysis.sql"
+```
+
+Section A (runnable) proves the Saturday closure, the ~29.8% median zero-day intermittence,
+Pareto demand concentration, the pre-Christmas ramp, and a 7-day rolling mean via window
+functions. Section B mirrors the DD-01..DD-07 cleaning rules and an RFM segmentation against
+the raw 8-column schema.
+
 ## Quickstart
 
 ```bash
@@ -73,6 +89,7 @@ src/real_retail/
   features/  leakage-safe calendar + lag/rolling builders
   models/    seasonal-naive(7) baseline, global LightGBM
   evaluate/  time-ordered split, MAE / MASE
+sql/         demand_analysis.sql — findings reproduced in pure SQL (DuckDB)
 scripts/     download_data, build_dataset, eda, run_eval
 docs/        DATA_DECISIONS.md, REAL_VS_SYNTHETIC.md, RESULTS.md
 tests/       cleaning rules, no-leakage split, MASE math, baseline behaviour

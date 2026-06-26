@@ -1,0 +1,17 @@
+# Raw data is NOT redistributed in-repo; regenerate with `make data`.
+data/raw/
+*.xlsx
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+
+# Notebooks
+.ipynb_checkpoints/

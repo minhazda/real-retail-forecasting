@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "real-retail-forecasting"
+version = "0.1.0"
+description = "Demand forecasting on real UK online-retail transactions (UCI Online Retail II) — the real-data counterpart to synthetic-retail-mlops-pipeline."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "openpyxl>=3.1",
+    "pyarrow>=14.0",
+    "scikit-learn>=1.3",
+    "lightgbm>=4.0",
+    "requests>=2.31",
+    "pyreadr>=0.5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "ruff>=0.5", "mypy>=1.8", "pandas-stubs"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.12"
+packages = ["real_retail"]
+mypy_path = "src"
+disallow_untyped_defs = true
+warn_unused_ignores = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

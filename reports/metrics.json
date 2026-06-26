@@ -1,0 +1,21 @@
+{
+  "test_days": 56,
+  "test_start": "2011-10-15",
+  "test_end": "2011-12-09",
+  "n_series": 49,
+  "n_test_points": 2744,
+  "pooled_mae_baseline": 79.02806122448979,
+  "pooled_mae_model": 58.25893285513873,
+  "pooled_improvement_pct": 26.280700864410132,
+  "median_series_improvement_pct": 29.62795348069434,
+  "series_win_rate": 0.9591836734693877,
+  "mean_mase_baseline": 1.6948005368661452,
+  "mean_mase_model": 1.4128220989123255,
+  "saturday_actual_mean": 0.0,
+  "saturday_pred_baseline_mean": 0.0,
+  "saturday_pred_model_mean": 2.1655524301169e-08,
+  "saturday_mae_baseline": 0.0,
+  "saturday_mae_model": 2.1655524301169e-08,
+  "nonsat_mae_baseline": 92.19940476190476,
+  "nonsat_mae_model": 67.9687549940526
+}
